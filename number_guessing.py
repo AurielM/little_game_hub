@@ -1,6 +1,7 @@
 from random import randint
+from main import Hub
 
-class RandomNumberG:
+class RandomNumberG(Hub):
     """
     In this game you need to guess the number chosen by the computer between 1 and 100
     Depending on the level of difficulty chosen you'll get 5, 10 or 15 guesses
