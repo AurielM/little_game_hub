@@ -12,12 +12,12 @@ class Hub:
 
     def introduce_player():
         
-        player_name = input(str('\nWelcome player! \n\n To avoid being called \'player\' for the remainder of the game input name here: '))
+        player_name = input('\nWelcome player! \n\n To avoid being called \'player\' for the remainder of the game input name here: ')
         
         if player_name == '':
             player_name = 'player'
 
-        print('ok! Your name is ' + player_name)
+        print(f'ok! Your name is  + {player_name}')
 
 
 Hub.introduce_player()
