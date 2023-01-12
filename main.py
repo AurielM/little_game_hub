@@ -17,7 +17,7 @@ class Hub:
         if player_name == '':
             player_name = 'player'
 
-        print(f'ok! Your name is  + {player_name}')
+        print(f'ok! Your name is {player_name}')
 
 
 Hub.introduce_player()
