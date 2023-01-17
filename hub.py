@@ -32,12 +32,12 @@ class Hub:
 
 
     def main_menu(self):
-        game.welcome_message()
+        self.welcome_message()
         if self.location == 'The little_game_hub': 
             choose_game = [
                 inquirer.List('Choice of Game',
                     message="What game would you like to play? \n To exit game: 'Ctrl + c'.",
-                    choices=['Number Guessing: undergoing maintenance', 'Hangman: undergoing maintenance', 'Rock Paper Scissors: undergoing maintenance', 'Other'],
+                    choices=['Number Guessing Game', 'Hangman', 'Rock Paper Scissors', 'Other'],
                     carousel=True
                 ),]
             answers = inquirer.prompt(choose_game)
@@ -53,5 +53,5 @@ class Hub:
         available_games = {RandomNumberG(): "Number guessing game", ExampleGame2: "Hangman"}
         game_choices = list(available_games.values)
         
-        return game_choices(str())
+        return game_choices()
 
