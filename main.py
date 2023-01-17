@@ -1,4 +1,6 @@
 import inquirer
+from number_guessing import RandomNumberG
+from number_guessing import ExampleGame2
 
 class Hub:
     """
@@ -7,11 +9,12 @@ class Hub:
 
 
     def __init__(self):
-        self.location = 'The little_game_hu' 
+        self.location = 'The little_game_hub' 
         self.player_score = 0
         self.player_name = None
         self.new_player = True # game_count is true when the player has just entered the game
-
+        self.numer_guessing = RandomNumberG
+        self.example_game2 = ExampleGame2
 
     def introduce_player(self):
         
@@ -46,6 +49,11 @@ class Hub:
         return(answers)
 
 
+    def get_choices(answers): 
+        available_games = {RandomNumberG(): "Number guessing game", ExampleGame2: "Hangman"}
+        game_choices = list(available_games.values)
+        
+        return game_choices(str())
 
 game = Hub()
 game.introduce_player()

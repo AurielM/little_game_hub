@@ -1,7 +1,6 @@
 from random import randint
-from main import Hub
 
-class RandomNumberG(Hub):
+class RandomNumberG():
     """
     In this game you need to guess the number chosen by the computer between 1 and 100
     Depending on the level of difficulty chosen you'll get 5, 10 or 15 guesses
@@ -10,5 +9,10 @@ class RandomNumberG(Hub):
     You'll have the option of returning back to the main menu after each run
     """
 
-    def __init__(self, player):
+    def __init__(self):
+        print(self.player_name)
+
+class ExampleGame2():
+
+    def __init__(self) -> None:
         pass
