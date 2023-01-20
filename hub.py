@@ -51,7 +51,8 @@ class Hub:
 
     def get_choices(answers): 
         available_games = {RandomNumberG(): "Number guessing game", ExampleGame2: "Hangman"}
-        game_choices = list(available_games.values)
-        
-        return game_choices()
+        game_choices = list(available_games)
+        chosen_game = available_games[game_choices]
+        print(chosen_game)
+        return game_choices() + chosen_game
 

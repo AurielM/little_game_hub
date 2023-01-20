@@ -10,9 +10,11 @@ class RandomNumberG():
     """
 
     def __init__(self):
-        print(self.player_name)
+        print('Welcome to numberS')
 
 class ExampleGame2():
 
     def __init__(self) -> None:
         pass
+
+RandomNumberG()
