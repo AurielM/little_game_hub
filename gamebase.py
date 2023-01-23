@@ -14,7 +14,7 @@ class GameBase:
         self.location = 'The little_game_hub' 
 
 
-    def score_update(self):
+    def score_board(self):
         print(f'\nPlayer name: {self.player_name}\nCurrent score: {self.player_score}')
 
 
@@ -26,10 +26,10 @@ class GameBase:
         
 
     def introduce_location(self):
-        print(f'\n Welcome to the {self.location}!')
+        print(f'\nWelcome to the {self.location}!')
 
 
     def run_game(self):
-        self.score_update()
+        self.score_board()
         self.continue_playing()
 

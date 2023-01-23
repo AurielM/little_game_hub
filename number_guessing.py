@@ -19,14 +19,17 @@ class RandomNumberG(GameBase):
         self.new_player = False
         
 
+    def game_simulation(self):
+        self.player_score += 3
+        print('game_simulation: Player score: ', self.player_score)
+
+
     def run_game(self):
         self.introduce_location()
-        self.player_score += 3
-        print('player score', self.player_score)
-
-
-    def run_game(self):
-        print('playing game...')
+        
+        print('Game body here... \n\n{self.location} \n\n...is the game.')
+        
+        print('Round over!\n')
         super().run_game()
 
 

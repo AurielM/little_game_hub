@@ -18,8 +18,7 @@ def player_choice():
                 carousel=True
             ),]
         answers = inquirer.prompt(choose_game)
-        return answers['Choice of Game']()
-
+        return answers['Choice of Game']().run_game()
 
 GameBase.player_name = input('\nType your name here:')
 
@@ -30,6 +29,3 @@ if GameBase.player_name == '':
 while game_ongoing == True:
 
     game = player_choice()
-    game.run_game()
-    #game.play_game()
-    
