@@ -22,7 +22,11 @@ class GameBase:
         stay_or_nay = [
                     inquirer.Confirm("Continue", message="Play another round?", default=False
                     ),]
-        inquirer.prompt(stay_or_nay)
+        dcit_player_choice = inquirer.prompt(stay_or_nay)
+        if dcit_player_choice['Continue']:
+            return True
+        else:
+            return False
         
 
     def introduce_location(self):
@@ -31,5 +35,4 @@ class GameBase:
 
     def run_game(self):
         self.score_board()
-        self.continue_playing()
 

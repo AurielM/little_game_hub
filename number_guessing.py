@@ -16,7 +16,6 @@ class RandomNumberG(GameBase):
     def __init__(self):
         super().__init__()
         self.location = 'The Number Guessing Game'
-        self.new_player = False
         
 
     def game_simulation(self):
@@ -27,11 +26,14 @@ class RandomNumberG(GameBase):
     def run_game(self):
         self.introduce_location()
         
-        print('Game body here... \n\n{self.location} \n\n...is the game.')
-        
+        print(f'Game body here... \n\n{self.location} \n\n...is the game.')
+        self.game_simulation()
         print('Round over!\n')
         super().run_game()
-
+        if self.continue_playing():
+            self.run_game()
+        elif not self.continue_playing:
+            exit()
 
 class ExampleGame2():
 
