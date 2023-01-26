@@ -12,22 +12,25 @@ class RandomNumberG(GameBase):
     """
 
 
-
     def __init__(self):
         super().__init__()
         self.location = 'The Number Guessing Game'
-        
-
-    def game_simulation(self):
-        self.player_score += 3
-        print('game_simulation: Player score: ', self.player_score)
+        self.player_chances = { 'Easy': 20, 
+                                'Normal': 10, 
+                                'Hard': 5
+                                }
 
 
     def run_game(self):
         self.introduce_location()
-        
+        self.game_difficulty()
+
+        print(self.player_chances[self.difficulty_level_chosen])
+
+
         print(f'Game body here... \n\n{self.location} \n\n...is the game.')
-        self.game_simulation()
+
+
         print('Round over!\n')
         super().run_game()
         if self.continue_playing():
