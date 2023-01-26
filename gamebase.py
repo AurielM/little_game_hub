@@ -12,6 +12,8 @@ class GameBase:
 
     def __init__(self):
         self.location = 'The little_game_hub' 
+        self.difficulty_levels = ['Easy', 'Normal', 'Hard']
+        self.difficulty_level_chosen = None
 
 
     def score_board(self):
@@ -31,6 +33,17 @@ class GameBase:
 
     def introduce_location(self):
         print(f'\nWelcome to the {self.location}!')
+
+
+    def game_difficulty(self):
+        self.choose_difficulty = [
+            inquirer.List('Level of difficulty',
+                message="What difficulty level would you like to play?",
+                choices=self.difficulty_levels,
+                carousel=True
+            ),]
+        answers = inquirer.prompt(self.choose_difficulty)
+        self.difficulty_level_chosen = answers['Level of difficulty']
 
 
     def run_game(self):
