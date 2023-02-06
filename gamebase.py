@@ -14,6 +14,7 @@ class GameBase:
         self.location = 'The little_game_hub' 
         self.difficulty_levels = ['Easy', 'Normal', 'Hard']
         self.difficulty_level_chosen = None
+        self.round_ongoing = True
 
 
     def score_board(self):
@@ -24,15 +25,15 @@ class GameBase:
         stay_or_nay = [
                     inquirer.Confirm("Continue", message="Play another round?", default=False
                     ),]
-        dcit_player_choice = inquirer.prompt(stay_or_nay)
-        if dcit_player_choice['Continue']:
+        dict_player_choice = inquirer.prompt(stay_or_nay)
+        if dict_player_choice['Continue']:
             return True
         else:
             return False
         
 
     def introduce_location(self):
-        print(f'\nWelcome to the {self.location}!')
+        print(f'\nWelcome to the {self.location}!\n')
 
 
     def game_difficulty(self):
@@ -44,8 +45,12 @@ class GameBase:
             ),]
         answers = inquirer.prompt(self.choose_difficulty)
         self.difficulty_level_chosen = answers['Level of difficulty']
+        print(f' Difficulty: {self.difficulty_level_chosen}')
 
 
     def run_game(self):
         self.score_board()
+        self.introduce_location()
+        self.game_difficulty()
+        
 

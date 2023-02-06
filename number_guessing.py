@@ -19,24 +19,55 @@ class RandomNumberG(GameBase):
                                 'Normal': 10, 
                                 'Hard': 5
                                 }
+        self.game_rules = """ Rules:
+        - A random number will be chosen between 1 and 100
+        - The objective is to guess the number before you're out of guesses.
+        - You will be given hints on whether your guess is too high/too low per guess.
+        - You have have a limited number of guesses before it's game over!
+        """
+        self.guess_count = int
+        self.round_ongoing = True
+        self.hints = ['Too low!\n','Too high!\n', 'You win!\n']
 
 
     def run_game(self):
-        self.introduce_location()
-        self.game_difficulty()
+        super().run_game()
+        print(self.game_rules)
+        self.guess_count = self.player_chances[self.difficulty_level_chosen]
+        self.number_generated = randint(1, 100)
+        while self.round_ongoing:
+            self.players_guess = input('Player\'s guess: ')
+            print(self.number_comparison(self.players_guess))
+            self.guess_count -= 1
+            if self.guess_count > 0:
+                print(f'{self.guess_count} chances to guess the correct number')
+            else:
+                self.round_ongoing = False
+                
 
-        print(self.player_chances[self.difficulty_level_chosen])
-
-
-        print(f'Game body here... \n\n{self.location} \n\n...is the game.')
-
+        
 
         print('Round over!\n')
-        super().run_game()
+        self.play_again()
+        
+
+    def play_again(self):
         if self.continue_playing():
+            self.round_ongoing = True
             self.run_game()
         elif not self.continue_playing:
             exit()
+      
+
+    def number_comparison(self, players_guess):
+        if int(self.players_guess) < self.number_generated:
+            return self.hints[0]
+        elif int(self.players_guess) > self.number_generated:
+            return self.hints[1]
+        elif int(self.players_guess) == self.number_generated:
+            self.round_ongoing = False
+            return self.hints[2]
+
 
 class ExampleGame2():
 
