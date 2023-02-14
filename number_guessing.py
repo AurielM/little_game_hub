@@ -32,8 +32,10 @@ class RandomNumberG(GameBase):
 
     def run_game(self):
         super().run_game()
-        print(self.game_rules)
         self.guess_count = self.player_chances[self.difficulty_level_chosen]
+        self.introduce_difficulty_level_chosen = f'Number of guesses: {self.guess_count}'
+        print(self.introduce_difficulty_level_chosen)
+        print(self.game_rules)
         self.number_generated = randint(1, 100)
         while self.round_ongoing:
             self.players_guess = input('Player\'s guess: ')
