@@ -27,47 +27,53 @@ class RandomNumberG(GameBase):
         """
         self.guess_count = int
         self.round_ongoing = True
-        self.hints = ['Too low!\n','Too high!\n', 'You win!\n']
+        self.hints = ['Too low!\n','Too high!\n', 'You win!\n', 'Out of guesses!\n']
 
 
     def run_game(self):
         super().run_game()
         self.guess_count = self.player_chances[self.difficulty_level_chosen]
         self.introduce_difficulty_level_chosen = f'Number of guesses: {self.guess_count}'
-        print(self.introduce_difficulty_level_chosen)
-        print(self.game_rules)
+        print(f' {self.introduce_difficulty_level_chosen} \n{self.game_rules}')
         self.number_generated = randint(1, 100)
+        
         while self.round_ongoing:
             self.players_guess = input('Player\'s guess: ')
-            print(self.number_comparison(self.players_guess))
             self.guess_count -= 1
-            if self.guess_count > 0:
-                print(f'{self.guess_count} chances to guess the correct number')
-            else:
-                self.round_ongoing = False
-                
-
-        
-
-        print('Round over!\n')
+            print(self.number_comparison(self.players_guess))
+            self.count_down()
         self.play_again()
         
 
     def play_again(self):
+        print(f'Round over!\n')
+        print(self.score_board())
         if self.continue_playing():
             self.round_ongoing = True
             self.run_game()
-        elif not self.continue_playing:
-            exit()
+
       
+    def count_down(self):
+        if self.guess_count > 0:
+            if self.round_ongoing == True:
+                print(f'{self.guess_count} chance(s) to guess the correct number')
+        else:
+            self.round_ongoing = False
+            return self.hints[2]
+
 
     def number_comparison(self, players_guess):
+        if self.guess_count == 0:
+            self.round_ongoing = False
+            return self.hints[3]  
+        
         if int(self.players_guess) < self.number_generated:
             return self.hints[0]
         elif int(self.players_guess) > self.number_generated:
             return self.hints[1]
         elif int(self.players_guess) == self.number_generated:
             self.round_ongoing = False
+            self.player_score += 1
             return self.hints[2]
 
 

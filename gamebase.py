@@ -15,10 +15,11 @@ class GameBase:
         self.difficulty_levels = ['Easy', 'Normal', 'Hard']
         self.difficulty_level_chosen = None
         self.round_ongoing = True
+        self.return_string = 'Returning to main menu\n'
 
 
     def score_board(self):
-        print(f'\nPlayer name: {self.player_name}\nCurrent score: {self.player_score}')
+        return f'\nPlayer name: {self.player_name}\nCurrent score: {self.player_score}\n'
 
 
     def continue_playing(self):
@@ -29,6 +30,7 @@ class GameBase:
         if dict_player_choice['Continue']:
             return True
         else:
+            print(self.return_string)
             return False
         
 
@@ -49,7 +51,7 @@ class GameBase:
 
 
     def run_game(self):
-        self.score_board()
+        print(self.score_board())
         self.introduce_location()
         self.game_difficulty()
         
