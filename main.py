@@ -27,5 +27,5 @@ if GameBase.player_name == '':
 
 
 while game_ongoing == True:
-
+    
     game = player_choice()
