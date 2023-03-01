@@ -38,10 +38,12 @@ class RandomNumberG(GameBase):
         self.number_generated = randint(1, 100)
         
         while self.round_ongoing:
-            self.players_guess = input('Player\'s guess: ')
-            self.guess_count -= 1
-            print(self.number_comparison(self.players_guess))
-            self.count_down()
+            self.players_guess = self.input_check(input_type_test=int, message='Player\'s guess:')
+            if self.players_guess == 'invalid':
+                pass
+            else:
+                print(self.number_comparison(self.players_guess))
+                self.count_down()
         self.play_again()
         
 
@@ -54,6 +56,7 @@ class RandomNumberG(GameBase):
 
       
     def count_down(self):
+        self.guess_count -= 1
         if self.guess_count > 0:
             if self.round_ongoing == True:
                 print(f'{self.guess_count} chance(s) to guess the correct number')
@@ -67,11 +70,11 @@ class RandomNumberG(GameBase):
             self.round_ongoing = False
             return self.hints[3]  
         
-        if int(self.players_guess) < self.number_generated:
+        if self.players_guess < self.number_generated:
             return self.hints[0]
-        elif int(self.players_guess) > self.number_generated:
+        elif self.players_guess > self.number_generated:
             return self.hints[1]
-        elif int(self.players_guess) == self.number_generated:
+        elif self.players_guess == self.number_generated:
             self.round_ongoing = False
             self.player_score += 1
             return self.hints[2]

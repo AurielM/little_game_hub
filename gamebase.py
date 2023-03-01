@@ -9,7 +9,6 @@ class GameBase:
     player_score = 0
     player_name = None
 
-
     def __init__(self):
         self.location = 'The little_game_hub' 
         self.difficulty_levels = ['Easy', 'Normal', 'Hard']
@@ -17,10 +16,8 @@ class GameBase:
         self.round_ongoing = True
         self.return_string = 'Returning to main menu\n'
 
-
     def score_board(self):
         return f'\nPlayer name: {self.player_name}\nCurrent score: {self.player_score}\n'
-
 
     def continue_playing(self):
         stay_or_nay = [
@@ -33,10 +30,8 @@ class GameBase:
             print(self.return_string)
             return False
         
-
     def introduce_location(self):
         print(f'\nWelcome to the {self.location}!\n')
-
 
     def game_difficulty(self):
         self.choose_difficulty = [
@@ -48,6 +43,21 @@ class GameBase:
         answers = inquirer.prompt(self.choose_difficulty)
         self.difficulty_level_chosen = answers['Level of difficulty']
         print(f' Difficulty: {self.difficulty_level_chosen}')
+
+    def input_check(self, input_type_test, message=str):
+        if input_type_test == int:
+            try:
+                input_type_test = int(input(message))
+                return input_type_test
+            except ValueError:
+                print("Nice try, whole numbers only. Go again.\n")
+                return 'invalid'
+        # elif input_type_test == str:
+        #     try:
+        #         input_type_test = str(input(message))
+        #         print("string:", input_type_test)
+        #     except ValueError:
+        #         print("Nice try, letters only")
 
 
     def run_game(self):
