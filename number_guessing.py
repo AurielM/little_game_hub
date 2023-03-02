@@ -93,9 +93,9 @@ class HangManG(GameBase):
     def __init__(self):
         super().__init__()
         self.location = 'Hang Man'
-        self.player_chances = { 'Easy': 20, 
-                                'Normal': 10, 
-                                'Hard': 5
+        self.hangman_words = { 'Easy': ['dusk', 'goat', 'know', 'lift', 'folk', 'drew', 'pile', 'west', 'brew', 'wash', 'four', 'apex', 'atom'],  
+                                'Normal': ['should', 'people', 'change', 'little', 'number', 'differ', 'system', 'follow', 'before', 'jumble'], 
+                                'Hard': ['abstract', 'notebok', 'optimism', 'seasonal', 'training', 'whatever', 'vertical', 'position', 'intended']
                                 }
         self.game_rules = """ Rules:
         - A random word will be chosen
