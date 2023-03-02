@@ -1,7 +1,7 @@
 import inquirer
 
 from gamebase import GameBase
-from number_guessing import RandomNumberG, ExampleGame2
+from number_guessing import RandomNumberG, HangManG
 
 game_ongoing = True
 
@@ -12,7 +12,7 @@ def player_choice():
                 message="What game would you like to play?",
                 choices=[
                     ('Number Guessing Game', RandomNumberG), 
-                ('Hangman', ExampleGame2), 
+                ('Hangman', HangManG), 
                 ('Exit game', exit)
                 ],
                 carousel=True

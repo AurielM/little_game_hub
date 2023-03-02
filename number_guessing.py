@@ -80,11 +80,34 @@ class RandomNumberG(GameBase):
             return self.hints[2]
 
 
-class ExampleGame2():
+class HangManG(GameBase):
+    """
+    In this game you need to guess the word generated before the hangman is fully drawn
+    Depending on the level of difficulty chosen you'll have to guess words of 4, 6 and 8 letters long
+    Guess the word before your chances run out (you get 6 chances) and you win the round!
+
+    You'll have the option of returning back to the main menu after each run
+    """
+
 
     def __init__(self):
-        self.location = 'The Example game 2'
-
+        super().__init__()
+        self.location = 'Hang Man'
+        self.player_chances = { 'Easy': 20, 
+                                'Normal': 10, 
+                                'Hard': 5
+                                }
+        self.game_rules = """ Rules:
+        - A random word will be chosen
+        - The objective is to guess the word's letters before you're out of guesses.
+        - With each correct letter chosen, the word will appear.
+        - You have have a limited number of wrong guesses before it's game over!
+        """
+        self.guess_count = int
+        self.round_ongoing = True
+        self.hints = ['Wrong letter!\n','Right letter!\n', 'You win!\n', 'Hang Man!\n']
+    
+        
     def commence_game(self):
         print('game commencing' + self.location)
         pass
